@@ -3,36 +3,30 @@ import Option from './Option'
 
 
 
-export default class Options extends React.Component{
+const Options = (props) =>{
 
-    constructor(props){
-        super(props);
-        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+
+
+    const handleRemoveAll = () =>{
+        console.log(props.options)
+        props.handleDeleteOptions()
     }
 
-
-    handleRemoveAll(){
-        console.log(this.props.options)
-        this.props.handleDeleteOptions()
-    }
-
-    render(){
         return (
             <div> 
-            {this.props.options.length === 0 && <p>Please Enter some options </p>}
-            <button onClick={this.handleRemoveAll}>Remove All</button>
-            {this.props.options.map((option)=> {
+            {props.options.length === 0 && <p>Please Enter some options </p>}
+            <button onClick={handleRemoveAll}>Remove All</button>
+            {props.options.map((option)=> {
                 return <Option 
                 key={option} 
                 option={option} 
-                handleDeleteOption={this.props.handleDeleteOption}
+                handleDeleteOption={props.handleDeleteOption}
                 />
             })}
             </div>
         )
-    }
 }
-
+export default Options
 
 
 
