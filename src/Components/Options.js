@@ -14,12 +14,19 @@ const Options = (props) =>{
 
         return (
             <div> 
-            {props.options.length === 0 && <p>Please Enter some options </p>}
-            <button onClick={handleRemoveAll}>Remove All</button>
-            {props.options.map((option)=> {
+            <div className="widget-header">
+                <h3 className="widget-header__title">Your options</h3>
+                <button className="button--link" onClick={handleRemoveAll}>Remove All</button>
+            </div>
+            {props.options.length === 0 && 
+            <p className="widget__message">
+                Please Enter some options 
+            </p>}
+            {props.options.map((option,index)=> {
                 return <Option 
                 key={option} 
                 option={option} 
+                count={index+1}
                 handleDeleteOption={props.handleDeleteOption}
                 />
             })}
