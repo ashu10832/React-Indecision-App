@@ -7,15 +7,20 @@ import Header from './Header'
 
 export default class IndecisionApp extends React.Component{
 
-    handleDeleteOptions(){
+
+    state = {
+        options:[]
+    }
+
+    handleDeleteOptions = () => {
         this.setState(()=> ({options:[]}))
     }
 
-    handleDeleteOption(option){
+    handleDeleteOption = (option) => {
         this.setState((prevState) => ({options:prevState.options.filter(item => item!==option)}))
     }
 
-    handleAddOption(option){
+    handleAddOption = (option) => {
         if(!option){
             return 'Enter valid item'
         } else if (this.state.options.indexOf(option) > -1 ){
@@ -25,7 +30,7 @@ export default class IndecisionApp extends React.Component{
         this.setState((prevState)=> ({options:prevState.options.concat(option)}))
     }
 
-    handlePick(){
+    handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length)
         const option = this.state.options[randomNum]
         alert(option)
@@ -73,17 +78,7 @@ export default class IndecisionApp extends React.Component{
             </div>
         )
     }
-    
 
-    constructor(props){
-        super(props)
-        this.state = {
-            options:props.options
-        }
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
-        this.handleAddOption = this.handleAddOption.bind(this)
-        this.handlePick = this.handlePick.bind(this)
-        this.handleDeleteOption = this.handleDeleteOption.bind(this)
-    }
+
 
 }

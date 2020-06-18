@@ -12,11 +12,18 @@ module.exports = {
     mode: 'development',
     module:{
       rules:[{
-        loader: 'babel-loader',
         test: /\.js$/,
-        exclude:/node_modules/
+        exclude:/node_modules/,
+        use: ["babel-loader"]
         }]
-      }
+      },
+    devtool:'eval-cheap-module-source-map',
+    devServer: {
+      contentBase: path.join(__dirname, 'public'),
+      compress: true,
+      watchContentBase: true,
+      port: 9000
+    }
 
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default class AddOption extends React.Component{
 
-    handleFormSubmit(e){
+    handleFormSubmit = (e) => {
         e.preventDefault()
         const option = e.target.elements.option.value.trim()
 
@@ -12,14 +12,9 @@ export default class AddOption extends React.Component{
         }
 
         this.setState(()=> ({error}))
-    }
-
-    constructor(props){
-        super(props)
-        this.handleFormSubmit = this.handleFormSubmit.bind(this)
-        this.state = {
-            error: undefined
-        }
+    };
+    state = {
+        error: undefined
     }
     
 
